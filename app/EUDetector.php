@@ -11,7 +11,7 @@ namespace ComCalc;
 
 class EUDetector
 {
-    const EUList = Array(
+    const EU_LIST = Array(
         'AT',
         'BE',
         'BG',
@@ -41,6 +41,6 @@ class EUDetector
         'SK',
     );
     public static function isEu($country) {
-        return in_array($country, self::EUList);
+        return in_array($country, self::EU_LIST);
     }
 }
