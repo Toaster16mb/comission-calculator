@@ -1,0 +1,21 @@
+{
+    "name": "s.alekseev/comission-calculator",
+    "description": "test task",
+    "type": "project",
+    "authors": [
+        {
+            "name": "s.alekseev",
+            "email": "toaster16mb@gmail.com"
+        }
+    ],
+    "require": {
+        "ext-curl": "*",
+        "ext-json": "*",
+        "phpunit/phpunit": "^7.5"
+    },
+    "autoload": {
+        "psr-4" : {
+            "ComCalc\\" : "app"
+        }
+    }
+}
