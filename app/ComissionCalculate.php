@@ -32,8 +32,10 @@ class ComissionCalculate
                 throw new \Exception("Error: currency not found for row in $filename in line $line_number");
             }
             $binResLookup = new BinResultsLookupBinlist();
+            // Here we can change class that implements BinResultsInterface
             $country_code = $binResLookup->getCountryCodeByBin($row_data['bin']);
             $rateExchangeRatesApi = new RateExchangeRatesApi($row_data['currency']);
+            // Here we can change class that implements RateInterface
             $amt_fixed = $rateExchangeRatesApi->getAmntFixedByCurrencyCode($row_data['amount']);
             $comission = EUDetector::isEu($country_code) ? 0.01 : 0.02;
             echo (ceil($amt_fixed * $comission * 100) / 100).PHP_EOL;

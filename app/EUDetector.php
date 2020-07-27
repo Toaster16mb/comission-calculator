@@ -11,6 +11,7 @@ namespace ComCalc;
 
 class EUDetector
 {
+    // To edit country list simply add or remove country code from array
     const EU_LIST = Array(
         'AT',
         'BE',

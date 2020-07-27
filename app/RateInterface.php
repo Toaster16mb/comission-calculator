@@ -11,5 +11,6 @@ namespace ComCalc;
 
 interface RateInterface
 {
-
+    public function getAmntFixedByCurrencyCode($amount);
+    public function __construct($currency_code);
 }

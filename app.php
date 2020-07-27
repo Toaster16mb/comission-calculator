@@ -17,8 +17,10 @@ $fp = fopen($filename, 'r');
 
 try {
     $comissionCalculate = new ComissionCalculate();
+    // We provide link to file to keep compatibility to relative paths
     $comissionCalculate->CalclulateFromFile($fp, $filename);
 } catch (Exception $e) {
+    // Simple error logger
     $f_err = fopen('error.log', 'a');
     fputs($f_err, "[".date("Y-m-d H:i:s")."] ".$e->getMessage());
 }

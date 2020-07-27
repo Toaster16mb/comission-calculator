@@ -15,13 +15,16 @@ class BinResultsLookupBinlist implements BinResultsInterface
     public function getCountryCodeByBin($bin)
     {
         $bin_results = $this->file_get_contents_curl(self::API_URL.$bin);
+        // if could not get contsnts CURL returns false
         if (!$bin_results) {
             throw new \Exception("Error: could not get BIN results from remote server ".self::API_URL." for BIN $bin");
         }
         $bin_results = json_decode($bin_results, true);
+        // if could not decode JSON returns false
         if ($bin_results === false) {
             throw new \Exception("Error: could not decode BIN results from remote server ".self::API_URL." for BIN $bin");
         }
+        // if got unexpected format there is no point to continue
         if (!isset($bin_results['country']['alpha2']) && empty($bin_results['country']['alpha2'])) {
             throw new \Exception("Error: unset or empty value for country code of BIN $bin");
         }
