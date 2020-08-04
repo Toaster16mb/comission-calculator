@@ -7,16 +7,16 @@
  */
 
 namespace ComCalc\Test;
-use ComCalc\ComissionCalculate;
+use ComCalc\CommissionCalculate;
 
-class testComissionCalculate extends \PHPUnit\Framework\TestCase
+class testCommissionCalculate extends \PHPUnit\Framework\TestCase
 {
-    public function testCalclulateFromFile() {
+    public function testcalclulateFromFile() {
         $filename = "test.txt";
         $fp = fopen($filename, 'r');
-        $comissionCalculate = new ComissionCalculate();
+        $commissionCalculate = new CommissionCalculate();
         ob_start();
-        $comissionCalculate->CalclulateFromFile($fp, $filename);
+        $commissionCalculate->calclulateFromFile($fp, $filename);
         $res = ob_end_clean();
         $this->assertTrue($res == "10");
     }

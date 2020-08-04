@@ -1,7 +1,7 @@
 <?php
 require_once 'vendor/autoload.php';
 
-use ComCalc\ComissionCalculate;
+use ComCalc\CommissionCalculate;
 
 if (!isset($argv[1])) {
     die("Usage: php app.php {filename}");
@@ -16,9 +16,9 @@ if (!is_file($filename)) {
 $fp = fopen($filename, 'r');
 
 try {
-    $comissionCalculate = new ComissionCalculate();
+    $commissionCalculate = new CommissionCalculate();
     // We provide link to file to keep compatibility to relative paths
-    $comissionCalculate->CalclulateFromFile($fp, $filename);
+    $commissionCalculate->calclulateFromFile($fp, $filename);
 } catch (Exception $e) {
     // Simple error logger
     $f_err = fopen('error.log', 'a');

@@ -9,9 +9,9 @@
 namespace ComCalc;
 
 
-class ComissionCalculate
+class CommissionCalculate
 {
-    public function CalclulateFromFile($fp, $filename) {
+    public function calclulateFromFile($fp, $filename) {
         $line_number = 0;
         while ($row = fgets($fp)) {
             $line_number++;
@@ -37,8 +37,8 @@ class ComissionCalculate
             $rateExchangeRatesApi = new RateExchangeRatesApi($row_data['currency']);
             // Here we can change class that implements RateInterface
             $amt_fixed = $rateExchangeRatesApi->getAmntFixedByCurrencyCode($row_data['amount']);
-            $comission = EUDetector::isEu($country_code) ? 0.01 : 0.02;
-            echo (ceil($amt_fixed * $comission * 100) / 100).PHP_EOL;
+            $commission = EUDetector::isEu($country_code) ? Configs::$commissionPercentEU : Configs::$commissionPercentNonEU;
+            echo (ceil($amt_fixed * $commission * 100) / 100).PHP_EOL;
         }
     }
 }
