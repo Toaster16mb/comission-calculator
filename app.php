@@ -1,7 +1,12 @@
 <?php
 require_once 'vendor/autoload.php';
 
-use ComCalc\CommissionCalculate;
+use ComCalc\CommissionFileRunner;
+use ComCalc\CommissionCalculator;
+use ComCalc\BinResultsLookupBinlist;
+use ComCalc\Configs;
+use ComCalc\FileContentGetter;
+use ComCalc\RateExchangeRatesApi;
 
 if (!isset($argv[1])) {
     die("Usage: php app.php {filename}");
@@ -15,13 +20,18 @@ if (!is_file($filename)) {
 
 $fp = fopen($filename, 'r');
 
+
 try {
-    $commissionCalculate = new CommissionCalculate();
+    $fileContentGetter = new FileContentGetter();
+    $binResultsLookupBinlist = new BinResultsLookupBinlist($fileContentGetter);
+    $rateExchangeRatesApi = new RateExchangeRatesApi($fileContentGetter);
+    $commissionCalculator = new CommissionCalculator($binResultsLookupBinlist, $rateExchangeRatesApi);
+    $commissionFileRunner = new CommissionFileRunner($commissionCalculator);
     // We provide link to file to keep compatibility to relative paths
-    $commissionCalculate->calclulateFromFile($fp, $filename);
+    $commissionFileRunner->printCommissionFromFile($fp, $filename);
 } catch (Exception $e) {
     // Simple error logger
     $f_err = fopen('error.log', 'a');
-    fputs($f_err, "[".date("Y-m-d H:i:s")."] ".$e->getMessage());
+    fputs($f_err, "[".date("Y-m-d H:i:s")."] ".$e->getMessage().PHP_EOL);
 }
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "83c063eb2d697aa6939bb76a783961be",
+    "content-hash": "40cfcaf08429455ed80f32b1a9cdb6e2",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -1327,7 +1327,7 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.18.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
