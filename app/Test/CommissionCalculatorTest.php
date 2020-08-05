@@ -4,6 +4,7 @@ namespace ComCalc\Test;
 
 use ComCalc\CommissionCalculator;
 use ComCalc\BinResultsLookupBinlist;
+use ComCalc\EUDetector;
 use ComCalc\RateExchangeRatesApi;
 use ComCalc\Configs;
 
@@ -46,7 +47,9 @@ class testCommissionCalculator extends \PHPUnit\Framework\TestCase
                 )
             );
 
-        $commissionCalculator = new CommissionCalculator($binResLookup, $rateExchangeRatesApi);
+        $euDetector = new EUDetector();
+
+        $commissionCalculator = new CommissionCalculator($binResLookup, $rateExchangeRatesApi, $euDetector);
 
         $testCases = array(
             array(

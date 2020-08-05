@@ -9,8 +9,7 @@ class RateExchangeRatesApi implements RateInterface
         $this->fileContentGetter = $fileContentGetter;
     }
 
-    public function getAmntFixedByCurrencyCode($amount, $currencyCode)
-    {
+    public function getAmntFixedByCurrencyCode($amount, $currencyCode) {
         if ($currencyCode == "EUR") {
             return $amount;
         }

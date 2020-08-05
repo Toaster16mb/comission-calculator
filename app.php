@@ -4,7 +4,7 @@ require_once 'vendor/autoload.php';
 use ComCalc\CommissionFileRunner;
 use ComCalc\CommissionCalculator;
 use ComCalc\BinResultsLookupBinlist;
-use ComCalc\Configs;
+use ComCalc\EUDetector;
 use ComCalc\FileContentGetter;
 use ComCalc\RateExchangeRatesApi;
 
@@ -20,12 +20,12 @@ if (!is_file($filename)) {
 
 $fp = fopen($filename, 'r');
 
-
 try {
     $fileContentGetter = new FileContentGetter();
     $binResultsLookupBinlist = new BinResultsLookupBinlist($fileContentGetter);
     $rateExchangeRatesApi = new RateExchangeRatesApi($fileContentGetter);
-    $commissionCalculator = new CommissionCalculator($binResultsLookupBinlist, $rateExchangeRatesApi);
+    $euDetector = new EUDetector();
+    $commissionCalculator = new CommissionCalculator($binResultsLookupBinlist, $rateExchangeRatesApi, $euDetector);
     $commissionFileRunner = new CommissionFileRunner($commissionCalculator);
     // We provide link to file to keep compatibility to relative paths
     $commissionFileRunner->printCommissionFromFile($fp, $filename);

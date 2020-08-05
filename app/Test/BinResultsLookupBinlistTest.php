@@ -6,8 +6,7 @@ use ComCalc\FileContentGetter;
 
 class testBinResultsLookupBinlist extends \PHPUnit\Framework\TestCase
 {
-    public function testGetCountryCodeByBin()
-    {
+    public function testGetCountryCodeByBin() {
         $fileContentGetter = $this->createMock(FileContentGetter::class);
         $fileContentGetter
             ->expects($this->atLeastOnce())

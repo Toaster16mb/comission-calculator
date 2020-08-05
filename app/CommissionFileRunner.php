@@ -7,7 +7,7 @@ class CommissionFileRunner
     private $filename;
     private $lineNumber = 0;
 
-    public function __construct(CommissionCalculator $commissionCalculator) {
+    public function __construct($commissionCalculator) {
         $this->commissionCalculator = $commissionCalculator;
     }
 
